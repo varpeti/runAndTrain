@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dice</title>
+    <style type="text/css">
+        button
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: none;
+            font-size: 32px;
+            background-color: black;
+            color: white;
+        }
+        button:hover
+        {
+            background-color: green;
+            color: black;
+        }
+        button:active
+        {
+            background-color: #005500;
+            transform: translateY(4px) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <button onclick="roll();">Roll</button>
+        <p onclick="cl(this);">⚀ ⚁ ⚂ ⚃ ⚄ ⚅</p>
+    </div>
+    <script type="text/javascript">
+        var dice = ["⚀","⚁","⚂","⚃","⚄","⚅"];
+        var numR = 0;
+        function roll()
+        {
+            var p = document.getElementsByTagName('p')[0];
+            p.innerText = dice[Math.floor(Math.random()*6)];
+            var deg = 0;//Math.floor(Math.random()*360);
+            var size = 100;//Math.floor(Math.random()*80)+48;
+            p.style = "font-size: "+size+"px; transform: rotate("+deg+"deg); position: absolute; top: 50%; left: 50%;";
+            //if (numR==6) p.innerText="⚅";
+            numR++;
+        }
+        roll();
+        document.getElementsByTagName('p')[0].innerText="⚀";
+
+        function cl(elem)
+        {
+            console.log(elem);
+            if (elem.innerText == "⚅")
+                document.body.innerText="Succes"
+            else
+                document.body.innerText="Fail"
+        }
+    </script>
+</body>
+</html>
